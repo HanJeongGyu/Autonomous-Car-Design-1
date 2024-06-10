@@ -41,11 +41,11 @@ NewPing(TRIG3, ECHO3, MAX_DISTANCE)
 /////////////////////L298//////////////////////////
 #define IN1 11
 #define IN2 10
-#define ENR 24
+#define ENA 24
 
 #define IN3 9
 #define IN4 8
-#define ENL 25
+#define ENB 25
 
  float front_sonar = 0.0;
  float left_sonar  = 0.0;
