@@ -132,14 +132,14 @@ void motor_l(int speed)
 {
     if (speed >= 0)
     {
-        digitalWrite(IN1, LOW);
-        digitalWrite(IN2, HIGH);
+        digitalWrite(IN1, HIGH);
+        digitalWrite(IN2, LOW);
         analogWrite(ENL, speed); // 0-255
     }
     else
     {
-        digitalWrite(IN1, HIGH);
-        digitalWrite(IN2, LOW);
+        digitalWrite(IN1, LOW);
+        digitalWrite(IN2, HIGH);
         analogWrite(ENL, -speed);
     }
 }
@@ -148,14 +148,14 @@ void motor_r(int speed)
 {
     if (speed >= 0)
     {
-        digitalWrite(IN3, LOW);
-        digitalWrite(IN4, HIGH);
+        digitalWrite(IN3, HIGH);
+        digitalWrite(IN4, LOW);
         analogWrite(ENR, speed); // 0-255
     }
     else
     {
-        digitalWrite(IN3, HIGH);
-        digitalWrite(IN4, LOW);
+        digitalWrite(IN3, LOW);
+        digitalWrite(IN4, HIGH);
         analogWrite(ENR, -speed);
     }
 }
@@ -169,7 +169,7 @@ void robot_control(int left_motor_speed, int right_motor_speed)
 void wall_following(int base_speed)
 {
   float error = 0.0;
-  float Kp = 1.2; //나중에 조정해야 할 값(얼마나 돌지)
+  float Kp = 3.0; //나중에 조정해야 할 값(얼마나 돌지)
   int pwm_control = 0;
   int right_pwm = 0;
   int left_pwm  = 0;
@@ -186,8 +186,8 @@ void wall_following(int base_speed)
   if(right_pwm <= 0) right_pwm = 0;
   if(left_pwm  <= 0) left_pwm  = 0;
 
-  if(right_pwm >= 250) right_pwm = 250;
-  if(left_pwm  >= 250) left_pwm  = 250;
+  if(right_pwm >= 110) right_pwm = 110;
+  if(left_pwm  >= 255) left_pwm  = 255;
   
   robot_control(left_pwm,right_pwm);
 }
